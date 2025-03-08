@@ -13,13 +13,12 @@ from data_ingestion.items import (
     CompanyReviewItem,
     CompanyReviewLoader,
 )
-from w3lib.html import remove_tags
 
 
 class CompanySpider(scrapy.Spider):
     name = "company"
     allowed_domains = ["1900.com.vn"]
-    start_urls = [f"https://1900.com.vn/cong-ty?page={i}" for i in range(1, 2)]
+    start_urls = [f"https://1900.com.vn/cong-ty?page={i}" for i in range(1, 250)]
 
     def parse_overview(self, response):
         overview = CompanyOverviewLoader(item=CompanyOverviewItem(), response=response)
@@ -101,21 +100,21 @@ class CompanySpider(scrapy.Spider):
         ).getall()
 
         review_titles = response.css("div.d-flex .align-items-center>h2::text").re(
-            "\n\s*(.*)\n\s*$"
+            r"\n\s*(.*)\n\s*$"
         )
 
         review_positions = response.xpath(
             '//span[@class="mb-10 font-12 ReviewCandidateSubtext"]/text()'
-        ).re("\n\s*(.*)\n\s*$")
+        ).re(r"\n\s*(.*)\n\s*$")
 
         review_dates = response.xpath(
             "/html/body/div[1]/main/div/div[2]/div[1]/div[2]/div/div[2]/div/p/text()"
-        ).re("\n\s*\n\s*-\s*(.*)\n\s*$")
+        ).re(r"\n\s*\n\s*-\s*(.*)\n\s*$")
 
         review_pros_and_cons = (
             response.css(".mb-3 .ReviewDetails .blur-text")
             .xpath("string()")
-            .re("\n\s*(.*)\n\s*$")
+            .re(r"\n\s*(.*)\n\s*$")
         )
         pros = review_pros_and_cons[1::2]
         cons = review_pros_and_cons[0::2]
@@ -135,15 +134,7 @@ class CompanySpider(scrapy.Spider):
             review.add_value("pros", pros[i])
             review.add_value("cons", cons[i])
             res = review.load_item()
-            # res = {
-            #     "link": response.url,
-            #     "review_ratings": review_ratings[i],
-            #     "review_titles": review_titles[i],
-            #     "review_positions": review_positions[i],
-            #     "review_dates": review_dates[i],
-            #     "pros": pros[i],
-            #     "cons": cons[i],
-            # }
+
             with open(filename, "a") as f:
                 f.write(
                     json.dumps(ItemAdapter(res).asdict(), ensure_ascii=False) + "\n"
