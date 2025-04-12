@@ -24,7 +24,7 @@ class CompanySpider(scrapy.Spider):
         overview = CompanyOverviewLoader(item=CompanyOverviewItem(), response=response)
         overview.add_xpath(
             field_name="website",
-            xpath="/html/body/div[1]/main/div/div[2]/div[1]/div[1]/ul/li[1]/a/@href",
+            xpath="/html/body/div[1]/main/div/div[2]/div[1]/div[1]/ul/li[1]/a/text()",
         )
         overview.add_xpath(
             field_name="phone_number",
@@ -32,7 +32,7 @@ class CompanySpider(scrapy.Spider):
         )
         overview.add_xpath(
             field_name="department",
-            xpath="/html/body/div[1]/main/div/div[2]/div[1]/div[1]/ul/li[5]/a/@href",
+            xpath="/html/body/div[1]/main/div/div[2]/div[1]/div[1]/ul/li[5]/a/text()",
         )
         overview.add_xpath(
             field_name="business_type",
