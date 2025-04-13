@@ -12,6 +12,8 @@ class Config:
     DEBUG: str = "False"
     ENV: str = "dev"
     DATA_LAKE: str
+    LOG_DIR: str
+    LOG_LEVEL: str
     HF_TOKEN: str
     COOKIE: str
     today: str = date.today().strftime("%Y-%m-%d")
