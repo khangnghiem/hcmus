@@ -1,0 +1,15 @@
+polars
+torch
+torchvision
+ipykernel
+matplotlib
+altair
+numpy
+polars
+fastapi
+bokeh
+vega_datasets
+gradio
+ipywidgets
+scrapy
+scrapy-playwright

@@ -1,0 +1,35 @@
+@startuml
+entity "Customer" {
+    *customer_id : INT
+    ---
+    name : VARCHAR
+    address : VARCHAR
+    phone : VARCHAR
+}
+
+entity "Order" {
+    *order_id : INT
+    ---
+    order_date : DATE
+    customer_id : INT
+}
+
+entity "Product" {
+    *product_id : INT
+    ---
+    name : VARCHAR
+    price : DECIMAL
+}
+
+entity "OrderDetail" {
+    *order_id : INT
+    *product_id : INT
+    ---
+    quantity : INT
+    price : DECIMAL
+}
+
+Customer ||--o{ Order : places
+Order ||--|{ OrderDetail : contains
+Product ||--o{ OrderDetail : includes
+@enduml
