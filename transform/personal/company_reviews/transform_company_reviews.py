@@ -33,7 +33,7 @@ def transform_reviews_segmentation():
         pl.col("link").str.extract(r"/([^/?]+)(?:\?|$)", 1).alias("endpoint")
     )
     companies = pl.read_parquet(
-        "/Volumes/Seagate/Filen/data/public/load/company_reviews/*_list.parquet"
+        f"{cfg.DATA_LAKE}/public/load/company_reviews/*_list.parquet"
     ).select("link", "name", "location", "department")
     companies = companies.with_columns(
         pl.col("link").str.extract(r"/([^/?]+)(?:\?|$)", 1).alias("endpoint")
