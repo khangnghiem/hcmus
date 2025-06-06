@@ -1,0 +1,50 @@
+cells:
+  - kind: 2
+    languageId: sql
+    value: CREATE SCHEMA IF NOT EXISTS temporal;
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: >-
+      CREATE TABLE
+          IF NOT EXISTS temporal.non_temporal_person (id SERIAL, name VARCHAR(100), city VARCHAR(100));
+
+      INSERT INTO
+          temporal.non_temporal_person (name, city)
+      VALUES
+          ('John Doe', 'Smallville');
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: |-
+      UPDATE temporal.non_temporal_person
+      SET
+          city = 'Bigtown'
+      WHERE
+          name = 'John Doe';
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: |-
+      DELETE FROM temporal.non_temporal_person
+      WHERE
+          name = 'John Doe';
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: |-
+      SELECT
+          *
+      FROM
+          temporal.non_temporal_person
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: DROP TABLE temporal.non_temporal_person
+    metadata: {}
+metadata:
+  conn:
+    id: rGGDIsUC8b9ADF-9YQBf7
+    name: hcmus
+  database: datascience
+  schema: public

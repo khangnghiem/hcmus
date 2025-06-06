@@ -1,0 +1,150 @@
+cells:
+  - kind: 2
+    languageId: sql
+    value: CREATE SCHEMA IF NOT EXISTS temporal;
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: >-
+      -- Create a bitemporal table for person residences
+
+      CREATE TABLE temporal.bi_temporal_person (
+          id SERIAL PRIMARY KEY,
+          name VARCHAR(100) NOT NULL,
+          city VARCHAR(100) NOT NULL,
+          valid_from DATE NOT NULL,
+          valid_to DATE NOT NULL,
+          entered DATE NOT NULL,
+          superseded DATE,
+          CONSTRAINT valid_time_range CHECK (valid_from < valid_to),
+          CONSTRAINT transaction_time_range CHECK (entered < COALESCE(superseded, 'infinity'::date))
+      );
+
+
+      -- John lived in Smallville from 1985-04-03
+
+      INSERT INTO temporal.bi_temporal_person (name, city, valid_from, valid_to,
+      entered, superseded)
+
+      VALUES ('John Doe', 'Smallville', '1985-04-03', 'infinity', '1985-04-04',
+      NULL);
+
+
+      -- On 1994-12-27, we learn John moved to Bigtown on 1994-08-26
+
+      UPDATE temporal.bi_temporal_person 
+
+      SET valid_to = '1994-08-26', superseded = '1994-12-27'
+
+      WHERE name = 'John Doe' AND city = 'Smallville' AND superseded IS NULL;
+
+
+      INSERT INTO temporal.bi_temporal_person (name, city, valid_from, valid_to,
+      entered, superseded)
+
+      VALUES ('John Doe', 'Bigtown', '1994-08-26', 'infinity', '1994-12-27',
+      NULL);
+
+
+      -- On 2001-02-02, we discover John actually lived in Beachy from
+      1995-06-01 to 2000-09-03
+
+      UPDATE temporal.bi_temporal_person 
+
+      SET superseded = '2001-02-02'
+
+      WHERE name = 'John Doe' AND city = 'Bigtown' AND superseded IS NULL;
+
+
+      -- Then split the Bigtown record into three parts:
+
+      -- 1. Bigtown from 1994-08-26 to 1995-06-01 (newly corrected)
+
+      INSERT INTO temporal.bi_temporal_person (name, city, valid_from, valid_to,
+      entered, superseded)
+
+      VALUES ('John Doe', 'Bigtown', '1994-08-26', '1995-06-01', '2001-02-02',
+      NULL);
+
+
+      -- 2. Beachy from 1995-06-01 to 2000-09-03 (newly discovered)
+
+      INSERT INTO temporal.bi_temporal_person (name, city, valid_from, valid_to,
+      entered, superseded)
+
+      VALUES ('John Doe', 'Beachy', '1995-06-01', '2000-09-03', '2001-02-02',
+      NULL);
+
+
+      -- 3. Bigtown from 2000-09-03 onward (continuing)
+
+      INSERT INTO temporal.bi_temporal_person (name, city, valid_from, valid_to,
+      entered, superseded)
+
+      VALUES ('John Doe', 'Bigtown', '2000-09-03', 'infinity', '2001-02-02',
+      NULL);
+
+
+      -- On 2001-04-01, we learn John moved out of Bigtown on 2001-04-01
+
+      -- First, close the current Bigtown record (transaction time)
+
+      UPDATE temporal.bi_temporal_person 
+
+      SET superseded = '2001-04-01'
+
+      WHERE name = 'John Doe' AND city = 'Bigtown' AND valid_to = 'infinity' AND
+      superseded IS NULL;
+
+
+      -- Then update the record with the correct end date
+
+      INSERT INTO temporal.bi_temporal_person (name, city, valid_from, valid_to,
+      entered, superseded)
+
+      VALUES ('John Doe', 'Bigtown', '2000-09-03', '2001-04-01', '2001-04-01',
+      NULL);
+
+
+      -- Query to see the current state of the database
+
+      SELECT * FROM temporal.bi_temporal_person ORDER BY entered, valid_from;
+
+
+      -- Query to see what was believed to be true at a specific time (e.g.,
+      2000-01-01)
+
+      SELECT * FROM temporal.bi_temporal_person 
+
+      WHERE entered <= '2000-01-01' AND (superseded > '2000-01-01' OR superseded
+      IS NULL)
+
+      ORDER BY valid_from;
+
+
+      -- Query to see the actual history (valid time) as we know it now
+
+      SELECT * FROM temporal.bi_temporal_person 
+
+      WHERE superseded IS NULL
+
+      ORDER BY valid_from;
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: |-
+      SELECT
+          *
+      FROM
+          temporal.bi_temporal_person
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: DROP TABLE temporal.bi_temporal_person
+    metadata: {}
+metadata:
+  conn:
+    id: rGGDIsUC8b9ADF-9YQBf7
+    name: hcmus
+  database: datascience
+  schema: public

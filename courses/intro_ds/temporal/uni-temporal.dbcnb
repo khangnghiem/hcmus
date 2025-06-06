@@ -1,0 +1,73 @@
+cells:
+  - kind: 2
+    languageId: sql
+    value: CREATE SCHEMA IF NOT EXISTS temporal;
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: >-
+      CREATE TABLE
+          IF NOT EXISTS temporal.uni_temporal_person (id SERIAL, name TEXT, city TEXT, valid_from DATE, valid_to DATE, PRIMARY KEY (name, valid_from));
+
+      INSERT INTO
+          temporal.uni_temporal_person (name, city, valid_from, valid_to)
+      VALUES
+          ('John Doe', 'Smallville', '1975-04-03', 'infinity');
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: |-
+      INSERT INTO
+          temporal.uni_temporal_person (name, city, valid_from, valid_to)
+      VALUES
+          ('John Doe', 'Bigtown', '1994-08-26', 'infinity');
+
+      UPDATE temporal.uni_temporal_person
+      SET
+          valid_to = '1994-08-26'
+      WHERE
+          name = 'John Doe'
+          AND city = 'Smallville'
+          AND valid_to = 'infinity';
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: |-
+      UPDATE temporal.uni_temporal_person
+      SET
+          valid_to = '2001-04-01'
+      WHERE
+          name = 'John Doe'
+          AND city = 'Bigtown'
+          AND valid_to = 'infinity';
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: |-
+      SELECT
+          city
+      FROM
+          temporal.uni_temporal_person
+      WHERE
+          name = 'John Doe'
+          AND '1975-01-01' <= valid_from
+          AND valid_to <= '1995-01-01';
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: |-
+      SELECT
+          *
+      FROM
+          temporal.uni_temporal_person
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: DROP TABLE temporal.uni_temporal_person
+    metadata: {}
+metadata:
+  conn:
+    id: rGGDIsUC8b9ADF-9YQBf7
+    name: hcmus
+  database: datascience
+  schema: public

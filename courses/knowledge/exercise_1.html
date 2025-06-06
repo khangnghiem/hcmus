@@ -1,0 +1,677 @@
+<!DOCTYPE html><html><head>
+      <title>exercise_1</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/javascript">
+          window.MathJax = ({"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"options":{},"loader":{}});
+        </script>
+        <script type="text/javascript" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" charset="UTF-8"></script>
+        
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="index">Index</h1>
+<ul>
+<li><a href="#index">Index</a></li>
+<li><a href="#1-giới-thiệu-phạm-vi-tri-thức">1. Giới thiệu phạm vi tri
+thức</a></li>
+<li><a href="#2-thu-thập-tri-thức">2. Thu thập tri thức</a></li>
+<li><a href="#3-hệ-biểu-diễn-tri-thức-cho-định-luật-di-truyền-mendel">3.
+Hệ Biểu diễn Tri thức cho Định luật Di truyền Mendel</a>
+<ul>
+<li><a href="#31-mô-hình-tri-thức">3.1. Mô hình tri thức</a></li>
+<li><a href="#32-tập-biến--mathcalv">3.2. Tập biến $
+\mathcal{V}$</a></li>
+<li><a href="#33-tập-sự-kiện--mathcalf">3.3. Tập sự kiện $
+\mathcal{F}$</a></li>
+<li><a href="#34-tập-luật--mathcalr">3.4. Tập luật $ \mathcal{R}$</a>
+<ul>
+<li><a href="#341-định-luật-đồng-tính-luật-1">3.4.1. Định luật đồng tính
+(Luật 1)</a></li>
+<li><a href="#342-định-luật-phân-ly-luật-2">3.4.2. Định luật phân ly
+(Luật 2)</a></li>
+<li><a href="#343-định-luật-phân-ly-độc-lập-luật-3">3.4.3. Định luật
+phân ly độc lập (Luật 3)</a></li>
+<li><a href="#344-bảng-punnett-cho-phép-lai--aabb-times-aabb">3.4.4.
+Bảng Punnett cho phép lai $ AaBb \times AaBb$</a></li>
+<li><a href="#345-bảng-punnett-cho-phép-lai--aabbcc-times-aabbcc-">3.4.5. Bảng
+Punnett cho phép lai $ AaBbCc \times AaBbCc $</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#4-thuật-toán-suy-diễn">4. Thuật toán suy diễn</a>
+<ul>
+<li><a href="#41-input">4.1. Input</a></li>
+<li><a href="#42-output">4.2. Output</a></li>
+<li><a href="#43-thuật-toán">4.3. Thuật toán</a></li>
+</ul></li>
+<li><a href="#5-kết-luận">5. Kết luận</a></li>
+<li><a href="#6-references">6. References</a></li>
+<li><a href="#7-python-script">7. Python Script</a></li>
+</ul>
+<hr>
+<h1 id="giới-thiệu-phạm-vi-tri-thức">1. Giới thiệu phạm vi tri thức</h1>
+<p>Tri thức tập trung vào <strong>3 định luật Mendel</strong>:<br>
+- <strong>Định luật đồng tính</strong>: Thế hệ con lai F1 đồng tính khi
+bố mẹ thuần chủng khác biệt một tính trạng.<br>
+- <strong>Định luật phân ly</strong>: Các cặp alen phân ly độc lập trong
+quá trình hình thành giao tử.<br>
+- <strong>Định luật phân ly độc lập</strong>: Các cặp tính trạng di
+truyền độc lập với nhau.</p>
+<p><strong>Phạm vi tri thức:</strong></p>
+<ul>
+<li>Chỉ áp dụng cho gen đơn, tính trạng trội-lặn hoàn toàn.<br>
+</li>
+<li>Không xét:
+<ul>
+<li>Trường hợp gen đa tính trạng allele, liên kết gen hoặc hoán vị
+gen.<br>
+</li>
+<li>Trội không hoàn toàn</li>
+<li>Tương tác gen</li>
+<li>Liên kết gen &amp; hoán vị gen</li>
+<li>Di truyền giới tính chromosome X &amp; Y</li>
+<li>Đột biến gen/chromosome:</li>
+<li>Môi trường ảnh hưởng biểu hiện gen</li>
+</ul></li>
+</ul>
+<hr>
+<h1 id="thu-thập-tri-thức">2. Thu thập tri thức</h1>
+<p><strong>Nguồn tri thức:</strong></p>
+<ul>
+<li>Các thí nghiệm trên cây đậu Hà Lan (1865)</li>
+<li>Sách giáo khoa Sinh học lớp 8</li>
+</ul>
+<p><strong>Bảng tri thức:</strong></p>
+<table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 51%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr>
+<th>Định luật</th>
+<th>Mô tả</th>
+<th>Ví dụ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Đồng tính</strong></td>
+<td>F1 đồng tính nếu bố mẹ thuần chủng.</td>
+<td><code>P: AA × aa → F1: 100% Aa</code></td>
+</tr>
+<tr>
+<td><strong>Phân ly</strong></td>
+<td>Tỉ lệ kiểu gen F2 là 1:2:1, kiểu hình 3:1.</td>
+<td><code>F1: Aa × Aa → F2: 1AA:2Aa:1aa</code></td>
+</tr>
+<tr>
+<td><strong>Phân ly độc lập</strong></td>
+<td>Các cặp gen phân ly độc lập, tỉ lệ kiểu hình (3:1)^n.</td>
+<td><code>AaBb × AaBb → 9:3:3:1</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="hệ-biểu-diễn-tri-thức-cho-định-luật-di-truyền-mendel">3. Hệ Biểu
+diễn Tri thức cho Định luật Di truyền Mendel</h1>
+<h2 id="mô-hình-tri-thức">3.1. Mô hình tri thức</h2>
+<p>Hệ thống được xây dựng dựa trên bộ ba <span class="math inline">\mathcal{K} = (\mathcal{V}, \mathcal{F},
+\mathcal{R})</span>:</p>
+<h2 id="tập-biến--mathcalv">3.2. Tập biến $ \mathcal{V}$</h2>
+<p>$ \mathcal{V} =$ {$G_p, G_m, G_o, T_p, T_m, T_o, R, C$}</p>
+<p>Trong đó:</p>
+<ul>
+<li>$ G_p, G_m$: Kiểu gen bố và mẹ (ví dụ: <span class="math inline">Aa</span>, <span class="math inline">Bb</span>)</li>
+<li>$ G_o$: Kiểu gen đời con</li>
+<li>$ T_p, T_m, T_o$: Kiểu hình tương ứng</li>
+<li>$ R$: Tỉ lệ phân ly</li>
+<li>$ C$: Bảng tổ hợp các tính trạng độc lập</li>
+</ul>
+<h2 id="tập-sự-kiện--mathcalf">3.3. Tập sự kiện $ \mathcal{F}$</h2>
+<p>$ \mathcal{F} = {G_p = \alpha, G_m = \beta, T_p = \gamma, T_m =
+\delta}$</p>
+<p>Với $ \alpha, \beta \in $ { <span class="math inline">AA, Aa,
+aa</span> } $ \times$ {BB, Bb, bb} $ \text{và}$ $ \gamma, \delta$ là
+kiểu hình tương ứng.</p>
+<h2 id="tập-luật--mathcalr">3.4. Tập luật $ \mathcal{R}$</h2>
+<h3 id="định-luật-đồng-tính-luật-1">3.4.1. Định luật đồng tính (Luật
+1)</h3>
+<p>Nếu $ G_p = AA \land G_m = aa \Rightarrow G_o = Aa$ với độ tin cậy $c
+= 1.0 $</p>
+<h3 id="định-luật-phân-ly-luật-2">3.4.2. Định luật phân ly (Luật 2)</h3>
+<p>Nếu $ G_p = Aa \land G_m = Aa \Rightarrow R = \frac{1}{4}AA :
+\frac{1}{2}Aa : \frac{1}{4}aa $</p>
+<p>$ F_1: \left(\frac{1}{2}A + \frac{1}{2}a\right)^2 = \frac{1}{4}AA +
+\frac{1}{2}Aa + \frac{1}{4}aa $</p>
+<h3 id="định-luật-phân-ly-độc-lập-luật-3">3.4.3. Định luật phân ly độc
+lập (Luật 3)</h3>
+<p>Với 2 cặp gen độc lập: Nếu $ G_p = AaBb \land G_m = AaBb \Rightarrow
+F_1: \frac{9}{16}$A_B_ $ : \frac{3}{16}$ A_bb : $ \frac{3}{16}$ aaB_ $ :
+\frac{1}{16}aabb $</p>
+<p>$ F_1: \left(\frac{1}{2}A + \frac{1}{2}a\right)^2 \otimes
+\left(\frac{1}{2}B + \frac{1}{2}b\right)^2 = \frac{9}{16}$A_B_ $ :
+\frac{3}{16}$ A_bb : $ \frac{3}{16}$ aaB_ $ : \frac{1}{16}aabb $</p>
+<h3 id="bảng-punnett-cho-phép-lai--aabb-times-aabb">3.4.4. Bảng Punnett
+cho phép lai $ AaBb \times AaBb$</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>AB</strong></th>
+<th><strong>Ab</strong></th>
+<th><strong>aB</strong></th>
+<th><strong>ab</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AB</strong></td>
+<td>AABB</td>
+<td>AABb</td>
+<td>AaBB</td>
+<td>AaBb</td>
+</tr>
+<tr>
+<td><strong>Ab</strong></td>
+<td>AABb</td>
+<td>AAbb</td>
+<td>AaBb</td>
+<td>Aabb</td>
+</tr>
+<tr>
+<td><strong>aB</strong></td>
+<td>AaBB</td>
+<td>AaBb</td>
+<td>aaBB</td>
+<td>aaBb</td>
+</tr>
+<tr>
+<td><strong>ab</strong></td>
+<td>AaBb</td>
+<td>Aabb</td>
+<td>aaBb</td>
+<td>aabb</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Chú thích:</strong><br>
+- Hàng và cột là các loại giao tử của bố mẹ (AB, Ab, aB, ab). - Ô giao
+điểm là kiểu gen đời con tương ứng. - Từ bảng này, đếm số lượng từng
+kiểu hình để ra tỉ lệ:<br>
+- <code>A_B_</code>: 9/16<br>
+- <code>A_bb</code>: 3/16<br>
+- <code>aaB_</code>: 3/16<br>
+- <code>aabb</code>: 1/16</p>
+<h3 id="bảng-punnett-cho-phép-lai--aabbcc-times-aabbcc-">3.4.5. Bảng
+Punnett cho phép lai $ AaBbCc \times AaBbCc $</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th><strong>ABC</strong></th>
+<th><strong>ABc</strong></th>
+<th><strong>AbC</strong></th>
+<th><strong>Abc</strong></th>
+<th><strong>aBC</strong></th>
+<th><strong>aBc</strong></th>
+<th><strong>abC</strong></th>
+<th><strong>abc</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ABC</strong></td>
+<td>AABBCC</td>
+<td>AABBCc</td>
+<td>AABbCC</td>
+<td>AABbCc</td>
+<td>AaBBCC</td>
+<td>AaBBCc</td>
+<td>AaBbCC</td>
+<td>AaBbCc</td>
+</tr>
+<tr>
+<td><strong>ABc</strong></td>
+<td>AABBCc</td>
+<td>AABBcc</td>
+<td>AABbCc</td>
+<td>AABbcc</td>
+<td>AaBBCc</td>
+<td>AaBBcc</td>
+<td>AaBbCc</td>
+<td>AaBbcc</td>
+</tr>
+<tr>
+<td><strong>AbC</strong></td>
+<td>AABbCC</td>
+<td>AABbCc</td>
+<td>AAbbCC</td>
+<td>AAbbCc</td>
+<td>AaBbCC</td>
+<td>AaBbCc</td>
+<td>AabbCC</td>
+<td>AabbCc</td>
+</tr>
+<tr>
+<td><strong>Abc</strong></td>
+<td>AABbCc</td>
+<td>AABbcc</td>
+<td>AAbbCc</td>
+<td>AAbbcc</td>
+<td>AaBbCc</td>
+<td>AaBbcc</td>
+<td>AabbCc</td>
+<td>Aabbcc</td>
+</tr>
+<tr>
+<td><strong>aBC</strong></td>
+<td>AaBBCC</td>
+<td>AaBBCc</td>
+<td>AaBbCC</td>
+<td>AaBbCc</td>
+<td>aaBBCC</td>
+<td>aaBBCc</td>
+<td>aaBbCC</td>
+<td>aaBbCc</td>
+</tr>
+<tr>
+<td><strong>aBc</strong></td>
+<td>AaBBCc</td>
+<td>AaBBcc</td>
+<td>AaBbCc</td>
+<td>AaBbcc</td>
+<td>aaBBCc</td>
+<td>aaBBcc</td>
+<td>aaBbCc</td>
+<td>aaBbcc</td>
+</tr>
+<tr>
+<td><strong>abC</strong></td>
+<td>AaBbCC</td>
+<td>AaBbCc</td>
+<td>AabbCC</td>
+<td>AabbCc</td>
+<td>aaBbCC</td>
+<td>aaBbCc</td>
+<td>aabbCC</td>
+<td>aabbCc</td>
+</tr>
+<tr>
+<td><strong>abc</strong></td>
+<td>AaBbCc</td>
+<td>AaBbcc</td>
+<td>AabbCc</td>
+<td>Aabbcc</td>
+<td>aaBbCc</td>
+<td>aaBbcc</td>
+<td>aabbCc</td>
+<td>aabbcc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Chú thích:</strong><br>
+- Hàng và cột là các loại giao tử của bố mẹ (ABC, ABc, AbC, Abc, aBC,
+aBc, abC, abc). - Ô giao điểm là kiểu gen đời con tương ứng. - Tổng số
+tổ hợp: 64 (8x8). - Đếm số lượng từng kiểu hình để ra tỉ lệ:<br>
+- <code>A_B_C_</code>: 27/64<br>
+- <code>A_B_C</code>: 9/64<br>
+- <code>A_B_c_</code>: 9/64<br>
+- … (tương tự cho các kiểu hình khác)</p>
+<h1 id="thuật-toán-suy-diễn">4. Thuật toán suy diễn</h1>
+<p>Suy diễn tiến (Forward Chaining):</p>
+<ul>
+<li>Bước 1: Nhận input kiểu gen bố mẹ.</li>
+<li>Bước 2: Áp dụng luật Mendel tương ứng. Tách các tính trạng độc lập
+nhau với nhau thành input độc lập</li>
+<li>Bước 3: Tính toán tỉ lệ kiểu gen/kiểu hình.
+(genotype/phenotype)</li>
+<li>Bước 4: Trả kết quả kèm theo tỉ lệ</li>
+</ul>
+<h2 id="input">4.1. Input</h2>
+<ul>
+<li>Kiểu gen bố mẹ: $ G_p, G_m \in \mathcal{V}$</li>
+<li>Bảng tính trạng: $ A \succ a$ (trội hoàn toàn)</li>
+</ul>
+<h2 id="output">4.2. Output</h2>
+<ul>
+<li>Phân phối kiểu gen ở đời con $ P(G_o)$</li>
+<li>Phân phối kiểu hình ở đời con $ P(T_o)$</li>
+</ul>
+<h2 id="thuật-toán">4.3. Thuật toán</h2>
+<ol type="1">
+<li><strong>Bước khởi tạo</strong>:</li>
+</ol>
+<p>$ \mathcal{F}_0 = {G_p = \alpha, G_m = \beta} $</p>
+<ol start="2" type="1">
+<li><p><strong>Áp dụng luật</strong>:</p>
+<p>$ \forall r_i \in R,&nbsp;\text{if premise}(r_i) \subseteq F_t \Rightarrow
+F_{t+1} = F_t \cup \text{conclusion}(r_i)$</p></li>
+<li><p><strong>Tính tỉ lệ</strong>:</p>
+<p>$ P(G_o) = \prod_{i=1}^n P(\text{giao tử})_i$</p></li>
+</ol>
+<hr>
+<h1 id="kết-luận">5. Kết luận</h1>
+<p>Thuật toán đã triển khai thành công các định luật di truyền Mendel để
+tính toán phân bố kiểu gen (genotype) và kiểu hình (phenotype) của thế
+hệ F1. Cụ thể:</p>
+<ul>
+<li>Tính đúng đắn:
+<ul>
+<li>Áp dụng luật phân ly độc lập (Law of Independent Assortment) và luật
+phân ly (Law of Segregation) để xác định tỉ lệ các tổ hợp gen.</li>
+<li>Cho kết quả chính xác với phân số (Fraction), tránh sai số khi dùng
+số thực (float).</li>
+</ul></li>
+<li>Linh hoạt:
+<ul>
+<li>Xử lý được đa gen (monohybrid, dihybrid, trihybrid,…).</li>
+<li>Dễ dàng mở rộng cho các trường hợp gen liên kết, gen đa alen, hoặc
+tính trạng trội không hoàn toàn.</li>
+</ul></li>
+<li>Ứng dụng:
+<ul>
+<li>Hỗ trợ nghiên cứu di truyền học, lai tạo giống cây trồng/vật
+nuôi.</li>
+<li>Làm nền tảng cho hệ thống dự đoán di truyền (Genetics Prediction
+System) hoặc phần mềm giáo dục Sinh học.</li>
+</ul></li>
+</ul>
+<p>Kết luận: Thuật toán đã hiện thực hóa chính xác lý thuyết Mendel, có
+tiềm năng ứng dụng cao trong nghiên cứu và giảng dạy Di truyền học.
+Hướng phát triển: Mở rộng cho tính trạng liên kết giới tính.</p>
+<hr>
+<h1 id="references">6. References</h1>
+<ol type="1">
+<li>Bộ Giáo dục và Đào tạo. (2020). <em>Sách giáo khoa Sinh học 8</em>.
+Nhà xuất bản Giáo dục Việt Nam.</li>
+</ol>
+<hr>
+<h1 id="python-script">7. Python Script</h1>
+<pre class="text language-text language-python python" data-role="codeBlock" data-info="python"><code><span class="token keyword keyword-import">import</span> polars <span class="token keyword keyword-as">as</span> pl
+<span class="token keyword keyword-import">import</span> itertools
+<span class="token keyword keyword-from">from</span> fractions <span class="token keyword keyword-import">import</span> Fraction
+
+
+<span class="token keyword keyword-def">def</span> <span class="token function">calculate_genotypes</span><span class="token punctuation">(</span>parent1<span class="token punctuation">,</span> parent2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    gene_pairs1 <span class="token operator">=</span> <span class="token punctuation">[</span>parent1<span class="token punctuation">[</span>i <span class="token punctuation">:</span> i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token keyword keyword-for">for</span> i <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>parent1<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    gene_pairs2 <span class="token operator">=</span> <span class="token punctuation">[</span>parent2<span class="token punctuation">[</span>i <span class="token punctuation">:</span> i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token keyword keyword-for">for</span> i <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>parent2<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    gametes1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">(</span>pair<span class="token punctuation">)</span> <span class="token keyword keyword-for">for</span> pair <span class="token keyword keyword-in">in</span> gene_pairs1<span class="token punctuation">]</span>
+    gametes2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">(</span>pair<span class="token punctuation">)</span> <span class="token keyword keyword-for">for</span> pair <span class="token keyword keyword-in">in</span> gene_pairs2<span class="token punctuation">]</span>
+    parent1_gametes <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>itertools<span class="token punctuation">.</span>product<span class="token punctuation">(</span><span class="token operator">*</span>gametes1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    parent2_gametes <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>itertools<span class="token punctuation">.</span>product<span class="token punctuation">(</span><span class="token operator">*</span>gametes2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    genotype_counts <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    total <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword keyword-for">for</span> g1 <span class="token keyword keyword-in">in</span> parent1_gametes<span class="token punctuation">:</span>
+        <span class="token keyword keyword-for">for</span> g2 <span class="token keyword keyword-in">in</span> parent2_gametes<span class="token punctuation">:</span>
+            genotype <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token builtin">sorted</span><span class="token punctuation">(</span><span class="token punctuation">[</span>a1<span class="token punctuation">,</span> a2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword keyword-for">for</span> a1<span class="token punctuation">,</span> a2 <span class="token keyword keyword-in">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>g1<span class="token punctuation">,</span> g2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            genotype_counts<span class="token punctuation">[</span>genotype<span class="token punctuation">]</span> <span class="token operator">=</span> genotype_counts<span class="token punctuation">.</span>get<span class="token punctuation">(</span>genotype<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+            total <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword keyword-return">return</span> <span class="token punctuation">{</span>k<span class="token punctuation">:</span> Fraction<span class="token punctuation">(</span>v<span class="token punctuation">,</span> total<span class="token punctuation">)</span> <span class="token keyword keyword-for">for</span> k<span class="token punctuation">,</span> v <span class="token keyword keyword-in">in</span> genotype_counts<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+
+
+<span class="token keyword keyword-def">def</span> <span class="token function">calculate_phenotypes</span><span class="token punctuation">(</span>genotype_dist<span class="token punctuation">,</span> dominance_map<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    phenotype_counts <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword keyword-for">for</span> genotype<span class="token punctuation">,</span> prob <span class="token keyword keyword-in">in</span> genotype_dist<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        phenotype <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword keyword-for">for</span> i <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>genotype<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            gene_pair <span class="token operator">=</span> genotype<span class="token punctuation">[</span>i <span class="token punctuation">:</span> i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span>
+            <span class="token keyword keyword-if">if</span> gene_pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>isupper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                phenotype<span class="token punctuation">.</span>append<span class="token punctuation">(</span>dominance_map<span class="token punctuation">[</span>gene_pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword keyword-else">else</span><span class="token punctuation">:</span>
+                phenotype<span class="token punctuation">.</span>append<span class="token punctuation">(</span>dominance_map<span class="token punctuation">[</span>gene_pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        phenotype_key <span class="token operator">=</span> <span class="token string">" "</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>phenotype<span class="token punctuation">)</span>
+        phenotype_counts<span class="token punctuation">[</span>phenotype_key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>
+            phenotype_counts<span class="token punctuation">.</span>get<span class="token punctuation">(</span>phenotype_key<span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> prob
+        <span class="token punctuation">)</span>
+    <span class="token keyword keyword-return">return</span> phenotype_counts
+
+
+dominance_map <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"A"</span><span class="token punctuation">:</span> <span class="token string">"Hoa Đỏ"</span><span class="token punctuation">,</span>
+    <span class="token string">"a"</span><span class="token punctuation">:</span> <span class="token string">"Hoa Trắng"</span><span class="token punctuation">,</span>
+    <span class="token string">"B"</span><span class="token punctuation">:</span> <span class="token string">"Nụ Xanh"</span><span class="token punctuation">,</span>
+    <span class="token string">"b"</span><span class="token punctuation">:</span> <span class="token string">"Nụ Trắng"</span><span class="token punctuation">,</span>
+    <span class="token string">"C"</span><span class="token punctuation">:</span> <span class="token string">"Quả Vàng"</span><span class="token punctuation">,</span>
+    <span class="token string">"c"</span><span class="token punctuation">:</span> <span class="token string">"Quả Trắng"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment"># Example 0: Aa x Aa</span>
+parent1_ex0 <span class="token operator">=</span> <span class="token string">"Aa"</span>
+parent2_ex0 <span class="token operator">=</span> <span class="token string">"Aa"</span>
+genotype_dist_ex0 <span class="token operator">=</span> calculate_genotypes<span class="token punctuation">(</span>parent1_ex0<span class="token punctuation">,</span> parent2_ex0<span class="token punctuation">)</span>
+phenotype_dist_ex0 <span class="token operator">=</span> calculate_phenotypes<span class="token punctuation">(</span>genotype_dist_ex0<span class="token punctuation">,</span> dominance_map<span class="token punctuation">)</span>
+
+<span class="token comment"># Example 1: AaBb x AaBb</span>
+parent1_ex1 <span class="token operator">=</span> <span class="token string">"AaBb"</span>
+parent2_ex1 <span class="token operator">=</span> <span class="token string">"AaBb"</span>
+genotype_dist_ex1 <span class="token operator">=</span> calculate_genotypes<span class="token punctuation">(</span>parent1_ex1<span class="token punctuation">,</span> parent2_ex1<span class="token punctuation">)</span>
+phenotype_dist_ex1 <span class="token operator">=</span> calculate_phenotypes<span class="token punctuation">(</span>genotype_dist_ex1<span class="token punctuation">,</span> dominance_map<span class="token punctuation">)</span>
+
+<span class="token comment"># Example 2: AABB x aabb</span>
+parent1_ex2 <span class="token operator">=</span> <span class="token string">"AABB"</span>
+parent2_ex2 <span class="token operator">=</span> <span class="token string">"aabb"</span>
+genotype_dist_ex2 <span class="token operator">=</span> calculate_genotypes<span class="token punctuation">(</span>parent1_ex2<span class="token punctuation">,</span> parent2_ex2<span class="token punctuation">)</span>
+phenotype_dist_ex2 <span class="token operator">=</span> calculate_phenotypes<span class="token punctuation">(</span>genotype_dist_ex2<span class="token punctuation">,</span> dominance_map<span class="token punctuation">)</span>
+
+<span class="token comment"># Example 3: AaBB x aaBb</span>
+parent1_ex3 <span class="token operator">=</span> <span class="token string">"AaBB"</span>
+parent2_ex3 <span class="token operator">=</span> <span class="token string">"aaBb"</span>
+genotype_dist_ex3 <span class="token operator">=</span> calculate_genotypes<span class="token punctuation">(</span>parent1_ex3<span class="token punctuation">,</span> parent2_ex3<span class="token punctuation">)</span>
+phenotype_dist_ex3 <span class="token operator">=</span> calculate_phenotypes<span class="token punctuation">(</span>genotype_dist_ex3<span class="token punctuation">,</span> dominance_map<span class="token punctuation">)</span>
+
+<span class="token comment"># Example 4: AaBb x Aabb</span>
+parent1_ex4 <span class="token operator">=</span> <span class="token string">"AaBb"</span>
+parent2_ex4 <span class="token operator">=</span> <span class="token string">"Aabb"</span>
+genotype_dist_ex4 <span class="token operator">=</span> calculate_genotypes<span class="token punctuation">(</span>parent1_ex4<span class="token punctuation">,</span> parent2_ex4<span class="token punctuation">)</span>
+phenotype_dist_ex4 <span class="token operator">=</span> calculate_phenotypes<span class="token punctuation">(</span>genotype_dist_ex4<span class="token punctuation">,</span> dominance_map<span class="token punctuation">)</span>
+
+<span class="token comment"># Example 5: AaBbCc x AaBbCc</span>
+parent1_ex5 <span class="token operator">=</span> <span class="token string">"AaBbCc"</span>
+parent2_ex5 <span class="token operator">=</span> <span class="token string">"AaBbCc"</span>
+genotype_dist_ex5 <span class="token operator">=</span> calculate_genotypes<span class="token punctuation">(</span>parent1_ex5<span class="token punctuation">,</span> parent2_ex5<span class="token punctuation">)</span>
+phenotype_dist_ex5 <span class="token operator">=</span> calculate_phenotypes<span class="token punctuation">(</span>genotype_dist_ex5<span class="token punctuation">,</span> dominance_map<span class="token punctuation">)</span>
+
+
+<span class="token keyword keyword-def">def</span> <span class="token function">dist_to_df</span><span class="token punctuation">(</span>genotype_dist<span class="token punctuation">,</span> phenotype_dist<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    geno_df <span class="token operator">=</span> pl<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"Genotype"</span><span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">(</span>genotype_dist<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">"Probability"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token keyword keyword-for">for</span> p <span class="token keyword keyword-in">in</span> genotype_dist<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span>
+    pheno_df <span class="token operator">=</span> pl<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"Phenotype"</span><span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">(</span>phenotype_dist<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">"Probability"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token keyword keyword-for">for</span> p <span class="token keyword keyword-in">in</span> phenotype_dist<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword keyword-return">return</span> geno_df<span class="token punctuation">,</span> pheno_df
+
+
+<span class="token keyword keyword-def">def</span> <span class="token function">show_demo_table</span><span class="token punctuation">(</span>parent1<span class="token punctuation">,</span> parent2<span class="token punctuation">,</span> genotype_dist<span class="token punctuation">,</span> phenotype_dist<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"\nParents: </span><span class="token interpolation"><span class="token punctuation">{</span>parent1<span class="token punctuation">}</span></span><span class="token string"> x </span><span class="token interpolation"><span class="token punctuation">{</span>parent2<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+    geno_df<span class="token punctuation">,</span> pheno_df <span class="token operator">=</span> dist_to_df<span class="token punctuation">(</span>genotype_dist<span class="token punctuation">,</span> phenotype_dist<span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"\nGenotype Distribution:"</span><span class="token punctuation">)</span>
+    display<span class="token punctuation">(</span>geno_df<span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"\nPhenotype Distribution:"</span><span class="token punctuation">)</span>
+    display<span class="token punctuation">(</span>pheno_df<span class="token punctuation">)</span>
+
+
+<span class="token comment"># Demo tables for all examples</span>
+show_demo_table<span class="token punctuation">(</span>parent1_ex5<span class="token punctuation">,</span> parent2_ex5<span class="token punctuation">,</span> genotype_dist_ex5<span class="token punctuation">,</span> phenotype_dist_ex5<span class="token punctuation">)</span>
+show_demo_table<span class="token punctuation">(</span>parent1_ex0<span class="token punctuation">,</span> parent2_ex0<span class="token punctuation">,</span> genotype_dist_ex0<span class="token punctuation">,</span> phenotype_dist_ex0<span class="token punctuation">)</span>
+show_demo_table<span class="token punctuation">(</span>parent1_ex1<span class="token punctuation">,</span> parent2_ex1<span class="token punctuation">,</span> genotype_dist_ex1<span class="token punctuation">,</span> phenotype_dist_ex1<span class="token punctuation">)</span>
+show_demo_table<span class="token punctuation">(</span>parent1_ex2<span class="token punctuation">,</span> parent2_ex2<span class="token punctuation">,</span> genotype_dist_ex2<span class="token punctuation">,</span> phenotype_dist_ex2<span class="token punctuation">)</span>
+show_demo_table<span class="token punctuation">(</span>parent1_ex3<span class="token punctuation">,</span> parent2_ex3<span class="token punctuation">,</span> genotype_dist_ex3<span class="token punctuation">,</span> phenotype_dist_ex3<span class="token punctuation">)</span>
+show_demo_table<span class="token punctuation">(</span>parent1_ex4<span class="token punctuation">,</span> parent2_ex4<span class="token punctuation">,</span> genotype_dist_ex4<span class="token punctuation">,</span> phenotype_dist_ex4<span class="token punctuation">)</span></code></pre>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#index" class="md-toc-link">
+            <p>Index</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#giới-thiệu-phạm-vi-tri-thức" class="md-toc-link">
+            <ol>
+<li>Giới thiệu phạm vi tri thức</li>
+</ol>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#thu-thập-tri-thức" class="md-toc-link">
+            <ol start="2">
+<li>Thu thập tri thức</li>
+</ol>
+
+          </a></div><details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#hệ-biểu-diễn-tri-thức-cho-định-luật-di-truyền-mendel" class="md-toc-link"><ol start="3">
+<li>Hệ Biểu diễn Tri thức cho Định luật Di truyền Mendel</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#mô-hình-tri-thức" class="md-toc-link">
+            <p>3.1. Mô hình tri thức</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#tập-biến--mathcalv" class="md-toc-link">
+            <p>3.2. Tập biến <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">V</mi></mrow><annotation encoding="application/x-tex">\mathcal{V}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.08222em;">V</span></span></span></span></p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#tập-sự-kiện--mathcalf" class="md-toc-link">
+            <p>3.3. Tập sự kiện <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">F</mi></mrow><annotation encoding="application/x-tex">\mathcal{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.09931em;">F</span></span></span></span></p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#tập-luật--mathcalr" class="md-toc-link"><p>3.4. Tập luật <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">R</mi></mrow><annotation encoding="application/x-tex">\mathcal{R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">R</span></span></span></span></p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#định-luật-đồng-tính-luật-1" class="md-toc-link">
+            <p>3.4.1. Định luật đồng tính (Luật 1)</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#định-luật-phân-ly-luật-2" class="md-toc-link">
+            <p>3.4.2. Định luật phân ly (Luật 2)</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#định-luật-phân-ly-độc-lập-luật-3" class="md-toc-link">
+            <p>3.4.3. Định luật phân ly độc lập (Luật 3)</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#bảng-punnett-cho-phép-lai--aabb-times-aabb" class="md-toc-link">
+            <p>3.4.4. Bảng Punnett cho phép lai <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>a</mi><mi>B</mi><mi>b</mi><mo>×</mo><mi>A</mi><mi>a</mi><mi>B</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">AaBb \times AaBb</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">b</span></span></span></span></p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#bảng-punnett-cho-phép-lai--aabbcc-times-aabbcc-" class="md-toc-link">
+            <p>3.4.5. Bảng Punnett cho phép lai <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>a</mi><mi>B</mi><mi>b</mi><mi>C</mi><mi>c</mi><mo>×</mo><mi>A</mi><mi>a</mi><mi>B</mi><mi>b</mi><mi>C</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">AaBbCc \times AaBbCc</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">c</span></span></span></span></p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#thuật-toán-suy-diễn" class="md-toc-link"><ol start="4">
+<li>Thuật toán suy diễn</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#input" class="md-toc-link">
+            <p>4.1. Input</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#output" class="md-toc-link">
+            <p>4.2. Output</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#thuật-toán" class="md-toc-link">
+            <p>4.3. Thuật toán</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#kết-luận" class="md-toc-link">
+            <ol start="5">
+<li>Kết luận</li>
+</ol>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#references" class="md-toc-link">
+            <ol start="6">
+<li>References</li>
+</ol>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#python-script" class="md-toc-link">
+            <ol start="7">
+<li>Python Script</li>
+</ol>
+
+          </a></div>
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>
