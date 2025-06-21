@@ -1,3 +1,17 @@
+# Package Management
+
+## Install uv
+
+```sh
+pip install uv 
+```
+
+## Sync packages
+
+```sh
+uv sync
+```
+
 # Create an .env file
 
 with the following content:

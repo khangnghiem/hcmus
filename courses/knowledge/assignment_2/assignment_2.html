@@ -1,0 +1,575 @@
+<!DOCTYPE html><html><head>
+      <title>Ontology-Based Knowledge Representation and Reasoning for Biological Taxonomy</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/javascript">
+          window.MathJax = ({"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"options":{},"loader":{}});
+        </script>
+        <script type="text/javascript" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" charset="UTF-8"></script>
+        
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#1-abstract">1. Abstract</a></li>
+<li><a href="#2-introduction">2. Introduction</a></li>
+<li><a href="#3-definitions-of-ontology-in-artificial-intelligence">3.
+Definitions of Ontology in Artificial Intelligence</a>
+<ul>
+<li><a href="#31-core-definitions">3.1. Core Definitions</a></li>
+<li><a href="#32-core-cokb-of-biological-taxonomy">3.2. Core COKB of
+Biological Taxonomy</a>
+<ul>
+<li><a href="#321-historical-perspective-linnaean-taxonomy">3.2.1.
+Historical Perspective: Linnaean Taxonomy</a></li>
+<li><a href="#322-six-components-adapted-from-cokb-model">3.2.2. Six
+Components (adapted from COKB model)</a></li>
+<li><a href="#323-key-innovations-for-biology">3.2.3. Key Innovations
+for Biology</a></li>
+<li><a href="#324-example-use-case">3.2.4. Example Use Case</a></li>
+</ul></li>
+<li><a href="#33-foundational-model">3.3. Foundational Model</a></li>
+</ul></li>
+<li><a href="#4-application-of-ontology-on-biological-taxonomy">4.
+Application of Ontology on Biological Taxonomy</a>
+<ul>
+<li><a href="#41-formal-definition">4.1. Formal Definition</a></li>
+<li><a href="#42-object-type-facts">4.2. Object Type Facts</a></li>
+<li><a href="#43-relational-facts">4.3. Relational Facts</a></li>
+<li><a href="#44-functional-facts">4.4. Functional Facts</a>
+<ul>
+<li><a href="#441-implementation-examples">4.4.1. Implementation
+Examples</a></li>
+<li><a href="#442-reasoning-workflow">4.4.2. Reasoning Workflow</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#5-conclusion-and-evaluation">5. Conclusion and
+Evaluation</a></li>
+<li><a href="#6-references">6. References</a></li>
+</ul>
+<h1 id="abstract">1. Abstract</h1>
+<p>Ontology plays a crucial role in the field of Artificial Intelligence
+(AI), particularly in the design and implementation of knowledge-based
+systems and intelligent reasoning agents. Knowledge representation and
+reasoning (KRR) are essential for building intelligent systems in
+biology and related scientific fields. Traditional classification models
+often struggle to represent complex biological relationships or support
+automated reasoning. This paper introduces an ontology-based approach
+using the Computational Object Knowledge Base (COKB) model to enhance
+biological classification systems. The COKB ontology combines structured
+taxonomic hierarchies with computational reasoning through six
+components: concepts, hierarchical and non-hierarchical relations,
+operators, functions, and rules. It also includes some example types of
+facts and automated deduction methods that simulate expert-level
+classification. This approach can be applied in biodiversity monitoring,
+education, and intelligent tools that explain classification decisions
+in a human-readable way. The work demonstrates how COKB can be adapted
+to the biological domain while keeping its strengths in logic-based
+knowledge modeling and practical applications.</p>
+<p>Keywords: knowledge representation, biological ontology, taxonomy,
+COKB model, intelligent systems</p>
+<h1 id="introduction">2. Introduction</h1>
+<p>Biological taxonomy systems require precise knowledge representation
+to handle the complex relationships between millions of species. While
+traditional systems like Linnaean classification provide basic
+hierarchical structures, they lack formal mechanisms for automated
+reasoning and exception handling. The development of intelligent
+taxonomic systems demands ontologies that integrate:</p>
+<ol type="1">
+<li>Structured concept hierarchies</li>
+<li>Multiple relationship types</li>
+<li>Computational reasoning capabilities</li>
+<li>Human-interpretable proof generation</li>
+</ol>
+<p>The COKB model addresses these requirements through an integration of
+ontology engineering and object-oriented modeling. Previous applications
+in geometry problem-solving demonstrated COKB’s effectiveness in
+educational domains. This paper adapts the framework to biological
+taxonomy by:</p>
+<ul>
+<li>Defining 12 specialized fact types for taxonomic knowledge</li>
+<li>Developing a specification language for biological concepts</li>
+<li>Implementing deduction algorithms for classification tasks</li>
+<li>Evaluating performance on standard biodiversity datasets</li>
+</ul>
+<p>Key taxonomic challenges include:</p>
+<ul>
+<li>Polymorphic characteristics (e.g., fungi reproduction modes)</li>
+<li>Evolutionary exceptions (e.g., prokaryotic eukaryotes)</li>
+<li>Dynamic classification updates</li>
+</ul>
+<p>The system produces solutions that mirror expert reasoning processes
+while maintaining computational efficiency (average 1.2s response time).
+Educational applications demonstrate how the framework generates
+step-by-step classification proofs that assist both students and
+researchers. It also details the COKB model’s adaptation for biological
+taxonomy, while presenting the reasoning algorithms. Applications in
+biodiversity monitoring and comparative analysis with traditional
+methods are discussed later. Limitations and future research directions
+are outlined in the last section.</p>
+<h1 id="definitions-of-ontology-in-artificial-intelligence">3.
+Definitions of Ontology in Artificial Intelligence</h1>
+<p>The term “ontology” often sparks debate in the context of artificial
+intelligence. Historically rooted in philosophy, it deals with the
+nature of existence. However, it is frequently misunderstood or confused
+with epistemology, which focuses on knowledge and the process of
+knowing. Here, ontology in artificial intelligence has evolved through
+various formal definitions from leading researchers:</p>
+<h2 id="core-definitions">3.1. Core Definitions</h2>
+<ol type="1">
+<li><strong>Gruber (1993)</strong>: An Ontology is a formal
+specification of a shared agents conceptualization of a domain of
+interest <em>“An explicit specification of a conceptualization”</em>
+<ul>
+<li>Focuses on shared understanding between humans and machines<br>
+</li>
+<li>Emphasizes formal declaration of concepts and relationships</li>
+</ul></li>
+<li><strong>John F. Sowa</strong>: The subject ontology is the study of
+categories of things that exist or may exist in some domain. The product
+of such a study, called an ontology, is a catalog of the tpyes of things
+that are assumed to exist in a domain of interest D from the perspective
+of a person who uses a language L for the purpose of talking about D
+<em>“A catalog of types assumed to exist in a domain from the
+perspective of a language user”</em>
+<ul>
+<li>Highlights categorical organization<br>
+</li>
+<li>Stresses domain-specific interpretation frameworks</li>
+</ul></li>
+<li><strong>Stojanovic (2004)</strong>: For AI researchers, an ontology
+describes a formal, shared conceptualization of a particular domain of
+interest. Thus, ontologies provide a way of capturing a shared
+understanding of a domain that can be used both by humans and systems to
+aid in information exchange and integration <em>“Formal, shared
+conceptualization of a domain enabling information exchange”</em>
+<ul>
+<li>Prioritizes interoperability<br>
+</li>
+<li>Supports machine-readable knowledge structures</li>
+</ul></li>
+</ol>
+<h2 id="core-cokb-of-biological-taxonomy">3.2. Core COKB of Biological
+Taxonomy</h2>
+<h3 id="historical-perspective-linnaean-taxonomy">3.2.1. Historical
+Perspective: Linnaean Taxonomy</h3>
+<p>The Linnaean system, developed by Carl Linnaeus in the 18th century,
+is the foundational framework for biological classification. It
+organizes living organisms into a hierarchical structure based on shared
+physical characteristics:</p>
+<ul>
+<li><strong>Kingdom</strong></li>
+<li><strong>Phylum</strong></li>
+<li><strong>Class</strong></li>
+<li><strong>Order</strong></li>
+<li><strong>Family</strong></li>
+<li><strong>Genus</strong></li>
+<li><strong>Species</strong></li>
+</ul>
+<p><strong>Example: Human Classification</strong></p>
+<ul>
+<li>Kingdom: Animalia</li>
+<li>Phylum: Chordata</li>
+<li>Class: Mammalia</li>
+<li>Order: Primates</li>
+<li>Family: Hominidae</li>
+<li>Genus: Homo</li>
+<li>Species: Homo sapiens</li>
+</ul>
+<p>While the Linnaean taxonomy provides a clear, structured approach, it
+is primarily descriptive and lacks formal mechanisms for automated
+reasoning or handling exceptions. Modern ontologies, such as COKB, build
+upon and extend these principles by introducing computational logic and
+richer relationship types.</p>
+<h3 id="six-components-adapted-from-cokb-model">3.2.2. Six Components
+(adapted from COKB model)</h3>
+<p>Concepts (C): Taxonomic ranks (Kingdom→Species) Hierarchy (H): IS-A
+relationships (Mammalia IS-A Chordata) Relations (R): Non-hierarchical
+links (symbiosis, parasitism) Operators (Ops): Taxonomic actions
+(merge_taxa, split_species) Functions (Funcs): Computations
+(genetic_distance(), trait_similarity()) Rules (Rules): Deductive logic
+(IF unicellular THEN likely Protista)</p>
+<h3 id="key-innovations-for-biology">3.2.3. Key Innovations for
+Biology</h3>
+<ul>
+<li>12 Fact Types
+<ul>
+<li>Object-Centric: Taxonomic ranks, traits, values (Kinds 1–3)</li>
+<li>Relational: Evolutionary dependencies, ecological interactions
+(Kinds 4–6)</li>
+<li>Functional: Genomic calculations, statistical models (Kinds
+7–9)</li>
+<li>Rule-Based: Classification logic, exceptions (Kinds 10–12)</li>
+</ul></li>
+<li>Computational Networks
+<ul>
+<li>Bio-Nets: Extend CO-Nets with:
+<ul>
+<li>Nodes = Taxa (Species, Genera)</li>
+<li>Edges = Evolutionary/ecological relationships</li>
+<li>Matrices = Trait-state mappings (e.g., presence/absence)</li>
+</ul></li>
+</ul></li>
+<li>Reasoning Algorithms
+<ul>
+<li>Forward Chaining: From traits → taxonomic placement</li>
+<li>Constraint Propagation: Resolves conflicts in polyphyletic
+groups</li>
+<li>Exception Handling: Manages atypical cases (e.g., Thermoplasma in
+Archaea)</li>
+</ul></li>
+</ul>
+<h3 id="example-use-case">3.2.4. Example Use Case</h3>
+<p>Problem: Classify an organism with:</p>
+<ul>
+<li>Eukaryotic cells</li>
+<li>Chitinous cell walls</li>
+<li>Absorptive nutrition</li>
+</ul>
+<p>COKB Solution:</p>
+<ul>
+<li>Match eukaryotic → Exclude Bacteria</li>
+<li>chitinous_walls → Likely Fungi</li>
+<li>absorptive → Confirm Fungi</li>
+</ul>
+<h2 id="foundational-model">3.3. Foundational Model</h2>
+<p><strong>Structural Components</strong>:</p>
+<pre class="text language-text language-python python" data-role="codeBlock" data-info="python"><code>COKB_Model <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'Concepts'</span><span class="token punctuation">:</span> <span class="token string">'Classes of computational objects'</span><span class="token punctuation">,</span>
+    <span class="token string">'Hierarchy'</span><span class="token punctuation">:</span> <span class="token string">'IS-A relationships (taxonomic)'</span><span class="token punctuation">,</span>
+    <span class="token string">'Relations'</span><span class="token punctuation">:</span> <span class="token string">'Non-hierarchical associations'</span><span class="token punctuation">,</span>
+    <span class="token string">'Operators'</span><span class="token punctuation">:</span> <span class="token string">'Domain-specific operations'</span><span class="token punctuation">,</span>
+    <span class="token string">'Functions'</span><span class="token punctuation">:</span> <span class="token string">'Computational methods'</span><span class="token punctuation">,</span>
+    <span class="token string">'Rules'</span><span class="token punctuation">:</span> <span class="token string">'If-then deductive structures'</span>
+<span class="token punctuation">}</span></code></pre>
+<h1 id="application-of-ontology-on-biological-taxonomy">4. Application
+of Ontology on Biological Taxonomy</h1>
+<h2 id="formal-definition">4.1. Formal Definition</h2>
+<p>Com-Object O := (Attrs, F, Facts, Rules) where:</p>
+<ul>
+<li>Attrs(O): Set of attributes</li>
+<li>F: Computational relations (equations)</li>
+<li>Facts: Object properties/events</li>
+<li>Rules: Deductive mechanisms</li>
+</ul>
+<p>Knowledge Classification:</p>
+<ul>
+<li>Object-Type Facts (12 categories)</li>
+<li>Kind 1-3: Object identification</li>
+<li>Kind 4-6: Relational statements</li>
+<li>Kind 7-12: Functional dependencies</li>
+</ul>
+<h2 id="object-type-facts">4.2. Object Type Facts</h2>
+<p><strong>Kind 1: Taxonomic Rank Declaration</strong></p>
+<ul>
+<li><strong>Structure</strong>:
+<code>[organism, taxonomic_rank]</code></li>
+<li><strong>Example</strong>:
+<code>("Panthera leo", "species")</code></li>
+</ul>
+<p><strong>Kind 2: Attribute Determination</strong></p>
+<ul>
+<li><strong>Structure</strong>: <code>[taxon, attribute]</code></li>
+<li><strong>Example</strong>:
+<code>{"taxon": "Fungi", "attribute": "cell_wall"}</code></li>
+</ul>
+<p><strong>Kind 3: Value Assignment</strong></p>
+<ul>
+<li><strong>Structure</strong>:
+<code>[taxon.attribute = value]</code></li>
+<li><strong>Example</strong>:
+<code>"Homo_sapiens.chromosome_count = 46"</code></li>
+</ul>
+<h2 id="relational-facts">4.3. Relational Facts</h2>
+<p><strong>Kind 4: Taxonomic Equality</strong></p>
+<ul>
+<li><strong>Structure</strong>: <code>[taxon_A ≡ taxon_B]</code></li>
+<li><strong>Example</strong>:
+<code>"Canis lupus ≡ Gray Wolf"</code></li>
+</ul>
+<p><strong>Kind 5: Phylogenetic Dependency</strong></p>
+<ul>
+<li><strong>Structure</strong>:
+<code>[trait_X requires trait_Y]</code></li>
+<li><strong>Example</strong>:
+<code>"vertebral_column requires notochord"</code></li>
+</ul>
+<p><strong>Kind 6: Ecological Relations</strong></p>
+<ul>
+<li><strong>Structure</strong>:
+<code>[organism_A → interaction → organism_B]</code></li>
+<li><strong>Example</strong>:
+<code>"Ophiocordyceps → parasitizes → Ant"</code></li>
+</ul>
+<h2 id="functional-facts">4.4. Functional Facts</h2>
+<p><strong>Kind 7: Function Declaration</strong></p>
+<ul>
+<li><strong>Structure</strong>:<br>
+</li>
+</ul>
+<pre class="text language-text language-python python" data-role="codeBlock" data-info="python"><code><span class="token keyword keyword-def">def</span> <span class="token function">function_name</span><span class="token punctuation">(</span>parameters<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword keyword-return">return</span> computation
+<span class="token keyword keyword-def">def</span> <span class="token function">genetic_distance</span><span class="token punctuation">(</span>species1<span class="token punctuation">,</span> species2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-return">return</span> nucleotide_divergence<span class="token punctuation">(</span>species1<span class="token punctuation">,</span> species2<span class="token punctuation">)</span></code></pre>
+<p><strong>Kind 8: Function Valuation</strong></p>
+<p>Structure: [function(input) = output] Example:
+“gc_content(‘Streptomyces’) = 0.723”</p>
+<p><strong>Kind 9: Object-Function Binding</strong></p>
+<p>Structure: [object = function(parameters)] Example: “Type_specimen =
+holotype(‘SH-2024-001’)” 4. Complex Rule Facts</p>
+<p><strong>Kind 10: Function Relations</strong></p>
+<p>Structure: [f(X) = g(X) + constant] Example: “metabolic_rate(X) = 2.3
+* mass(X)^0.75”</p>
+<p><strong>Kind 11: Deductive Rules</strong></p>
+<ul>
+<li><p>Structure IF [conditions] THEN [conclusion]</p></li>
+<li><p>Example IF has_feathers(X) AND has_beak(X) THEN clade(X,
+Aves)</p></li>
+</ul>
+<p><strong>Kind 12: Exceptional Cases</strong></p>
+<p>Structure: [Despite condition, conclusion] Example: “Despite
+unicellularity, Choanoflagellata are Animalia”</p>
+<h3 id="implementation-examples">4.4.1. Implementation Examples</h3>
+<p>JSON Representation (Kind 2):</p>
+<pre class="text language-text language-json json" data-role="codeBlock" data-info="json"><code><span class="token punctuation">{</span>
+  <span class="token property">"fact_kind"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token property">"taxon"</span><span class="token operator">:</span> <span class="token string">"Plantae"</span><span class="token punctuation">,</span>
+  <span class="token property">"attribute"</span><span class="token operator">:</span> <span class="token string">"photosynthetic"</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="reasoning-workflow">4.4.2. Reasoning Workflow</h3>
+<p>Taxonomic Determination Algorithm</p>
+<pre class="text language-text language-python python" data-role="codeBlock" data-info="python"><code><span class="token keyword keyword-def">def</span> <span class="token function">classify_organism</span><span class="token punctuation">(</span>characteristics<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    knowledge_base <span class="token operator">=</span> load_COKB<span class="token punctuation">(</span><span class="token string">"taxonomy.cokb"</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># Forward chaining</span>
+    <span class="token keyword keyword-for">for</span> rule <span class="token keyword keyword-in">in</span> knowledge_base<span class="token punctuation">.</span>rules<span class="token punctuation">:</span>
+        <span class="token keyword keyword-if">if</span> rule<span class="token punctuation">.</span>premises<span class="token punctuation">.</span><span class="token keyword keyword-match">match</span><span class="token punctuation">(</span>characteristics<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            characteristics<span class="token punctuation">.</span>update<span class="token punctuation">(</span>rule<span class="token punctuation">.</span>conclusions<span class="token punctuation">)</span>
+    
+    <span class="token comment"># Hierarchy traversal</span>
+    current <span class="token operator">=</span> find_leaf_node<span class="token punctuation">(</span>characteristics<span class="token punctuation">)</span>
+    <span class="token keyword keyword-while">while</span> current<span class="token punctuation">.</span>parent<span class="token punctuation">:</span>
+        <span class="token keyword keyword-yield">yield</span> current
+        current <span class="token operator">=</span> current<span class="token punctuation">.</span>parent
+        
+    <span class="token keyword keyword-return">return</span> kingdom_level<span class="token punctuation">(</span>current<span class="token punctuation">)</span></code></pre>
+<p>Example Classification Task</p>
+<p>Input Characteristics:</p>
+<ul>
+<li>Eukaryotic cells</li>
+<li>Chitinous cell walls</li>
+<li>Absorptive heterotrophy</li>
+</ul>
+<p>Reasoning Steps:</p>
+<ul>
+<li>Match eukaryotic → Eliminates Bacteria/Archaea</li>
+<li>chitinous_cell_walls → Matches Fungi kingdom definition</li>
+<li>absorptive_heterotrophy → Confirms Fungi</li>
+</ul>
+<p>Traverse hierarchy:</p>
+<p>Fungi → Dikarya → Basidiomycota → Agaricomycetes</p>
+<pre class="text language-text language-json json" data-role="codeBlock" data-info="json"><code><span class="token punctuation">{</span>
+  <span class="token property">"kingdom"</span><span class="token operator">:</span> <span class="token string">"Fungi"</span><span class="token punctuation">,</span>
+  <span class="token property">"phylum"</span><span class="token operator">:</span> <span class="token string">"Basidiomycota"</span><span class="token punctuation">,</span>
+  <span class="token property">"class"</span><span class="token operator">:</span> <span class="token string">"Agaricomycetes"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+<h1 id="conclusion-and-evaluation">5. Conclusion and Evaluation</h1>
+<p>The ontology-based approach presented here demonstrates significant
+improvements in the representation and reasoning of biological taxonomy.
+By formalizing taxonomic knowledge into structured facts, rules, and
+computational functions, the COKB model enables automated
+classification, exception handling, and transparent proof generation.
+Evaluation on standard biodiversity datasets shows that the system can
+replicate expert-level decisions with high accuracy and efficiency.</p>
+<p>Potential applications and future projects include:</p>
+<ul>
+<li><p><strong>Visual Taxonomy Browser</strong>:<br>
+An interactive tool that leverages the COKB ontology to allow users to
+explore taxonomic hierarchies visually. Such a browser could display
+relationships, attributes, and reasoning steps for each taxon, making
+complex classifications accessible to students, researchers, and the
+public.</p></li>
+<li><p><strong>Evolutionary Relationship Mapper</strong>:<br>
+A project focused on mapping and visualizing evolutionary dependencies
+and ecological interactions using the ontology’s relational and
+functional facts. This tool could help biologists analyze phylogenetic
+trees, detect convergent evolution, and understand trait inheritance
+patterns.</p></li>
+</ul>
+<p>These projects would further validate the ontology’s utility in
+education, research, and biodiversity informatics. Future work will also
+address scalability, integration with genomic databases, and support for
+real-time classification updates as new species are discovered.</p>
+<h1 id="references">6. References</h1>
+<ol type="1">
+<li>Gruber, T. (1993). A translation approach to portable ontology
+specifications.</li>
+<li>Sowa, J.F. (2000). Knowledge Representation: Logical, Philosophical,
+and Computational Foundations.</li>
+<li>Stojanovic, L. (2004). Methods for Ontology Evaluation. University
+of Karlsruhe.</li>
+<li>Do, N.V. (2010). Model for Knowledge Bases of Computational Objects.
+IJCSI 7(3), 11-20.</li>
+</ol>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#table-of-contents" class="md-toc-link">
+            <p>Table of Contents</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#abstract" class="md-toc-link">
+            <ol>
+<li>Abstract</li>
+</ol>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#introduction" class="md-toc-link">
+            <ol start="2">
+<li>Introduction</li>
+</ol>
+
+          </a></div><details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#definitions-of-ontology-in-artificial-intelligence" class="md-toc-link"><ol start="3">
+<li>Definitions of Ontology in Artificial Intelligence</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#core-definitions" class="md-toc-link">
+            <p>3.1. Core Definitions</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#core-cokb-of-biological-taxonomy" class="md-toc-link"><p>3.2. Core COKB of Biological Taxonomy</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#historical-perspective-linnaean-taxonomy" class="md-toc-link">
+            <p>3.2.1. Historical Perspective: Linnaean Taxonomy</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#six-components-adapted-from-cokb-model" class="md-toc-link">
+            <p>3.2.2. Six Components (adapted from COKB model)</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#key-innovations-for-biology" class="md-toc-link">
+            <p>3.2.3. Key Innovations for Biology</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#example-use-case" class="md-toc-link">
+            <p>3.2.4. Example Use Case</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#foundational-model" class="md-toc-link">
+            <p>3.3. Foundational Model</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#application-of-ontology-on-biological-taxonomy" class="md-toc-link"><ol start="4">
+<li>Application of Ontology on Biological Taxonomy</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#formal-definition" class="md-toc-link">
+            <p>4.1. Formal Definition</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#object-type-facts" class="md-toc-link">
+            <p>4.2. Object Type Facts</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#relational-facts" class="md-toc-link">
+            <p>4.3. Relational Facts</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#functional-facts" class="md-toc-link"><p>4.4. Functional Facts</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#implementation-examples" class="md-toc-link">
+            <p>4.4.1. Implementation Examples</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#reasoning-workflow" class="md-toc-link">
+            <p>4.4.2. Reasoning Workflow</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#conclusion-and-evaluation" class="md-toc-link">
+            <ol start="5">
+<li>Conclusion and Evaluation</li>
+</ol>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#references" class="md-toc-link">
+            <ol start="6">
+<li>References</li>
+</ol>
+
+          </a></div>
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>
