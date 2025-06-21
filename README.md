@@ -2,13 +2,13 @@
 
 Please pull then checkout a development branch and create a Pull Request to merge into main:
 
-- pull:
+- pull: choose one of the following
 ```sh
 git pull # pull new content from the current branch
 git fetch # fetch new content in main branch
 ```
 
-- checkout:
+- checkout: choose one of the following
 ```sh
 git checkout -b <new_branch_name> # (first time)
 git checkout <branch_name> # (not first time)
