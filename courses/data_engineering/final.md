@@ -59,18 +59,19 @@ Mục tiêu chính của bài tập lớn này là chứng minh năng lực áp 
 4.  **Trực quan hóa (Visualization):** Xây dựng dashboard thông minh (Business Intelligence) để trực quan hóa các chỉ số chính như mức lương trung bình theo vùng miền, các ngành nghề đang là xu hướng (trending), và phân bố kỹ năng yêu cầu.
 
 ### 1.3 Phạm vi Nghiên cứu
-Dự án tập trung duy nhất vào nguồn dữ liệu công khai trên trang web 1900.com.vn. Về mặt công nghệ, dự án xoay quanh hệ sinh thái **Databricks Community Edition**, sử dụng **Apache Spark (PySpark)** làm động cơ xử lý chính, **Delta Lake** làm lớp lưu trữ, và **Scrapy** cho việc thu thập dữ liệu.
+Dự án tập trung duy nhất vào nguồn dữ liệu công khai trên trang web 1900.com.vn. Về mặt công nghệ, dự án xoay quanh hệ sinh thái **Databricks Free Edition**, sử dụng **Apache Spark (PySpark)** làm động cơ xử lý chính, **Delta Lake** làm lớp lưu trữ, và **Scrapy** cho việc thu thập dữ liệu.
 
 ---
 
 ## 2. Cơ sở Lý thuyết và Kiến trúc Hệ thống
 
 ### 2.1 Mô hình Databricks Lakehouse
-Dự án này vượt ra khỏi khuôn khổ của Kho dữ liệu (Data Warehouse) truyền thống bằng cách áp dụng mô hình Lakehouse. Đây là một kiến trúc lai ghép, kết hợp những ưu điểm tốt nhất của hai thế giới:
-*   **Data Lake:** Khả năng lưu trữ dữ liệu thô với chi phí thấp, khả năng mở rộng vô hạn và hỗ trợ đa dạng định dạng (văn bản, hình ảnh, video, JSON).
-*   **Data Warehouse:** Các tính năng quản lý dữ liệu mạnh mẽ như giao dịch ACID, thực thi lược đồ (schema enforcement), và hiệu năng truy vấn cao.
+Dự án này vượt ra khỏi khuôn khổ hạn chế của các Kho dữ liệu (Data Warehouse) truyền thống hay các Hồ dữ liệu (Data Lake) đơn lẻ bằng cách áp dụng mô hình tiên tiến **Databricks Lakehouse**. Đây là một kiến trúc lai ghép mang tính cách mạng, được thiết kế để kết hợp những ưu điểm vượt trội nhất của hai thế giới dữ liệu vốn dĩ tách biệt:
 
-Mô hình này cho phép chúng ta lưu trữ dữ liệu thô từ quá trình scraping (dạng JSON) trực tiếp vào hệ thống mà không cần tiền xử lý phức tạp, sau đó tinh chỉnh dần dần để phục vụ báo cáo, giúp giảm thiểu độ trễ dữ liệu và đơn giản hóa kiến trúc hệ thống.
+*   **Sự linh hoạt của Data Lake:** Kiến trúc này thừa hưởng khả năng lưu trữ dữ liệu thô với chi phí thấp và khả năng mở rộng gần như vô hạn từ Data Lake. Nó cho phép hệ thống chấp nhận mọi định dạng dữ liệu, từ dữ liệu có cấu trúc (bảng biểu), bán cấu trúc (JSON, XML) đến phi cấu trúc (văn bản, hình ảnh, video) mà không yêu cầu định nghĩa lược đồ trước (schema-on-read). Điều này cực kỳ quan trọng đối với dự án này, nơi dữ liệu đầu vào là các tệp JSON thô, đa dạng và thường xuyên thay đổi cấu trúc từ quá trình web scraping.
+*   **Sự tin cậy của Data Warehouse:** Đồng thời, Lakehouse tích hợp các tính năng quản lý dữ liệu mạnh mẽ vốn chỉ có ở Data Warehouse doanh nghiệp. Các tính năng này bao gồm đảm bảo tính toàn vẹn giao dịch (ACID transactions), thực thi và quản trị lược đồ (schema enforcement & evolution), cũng như khả năng tối ưu hóa hiệu năng truy vấn cao cho các tác vụ Business Intelligence (BI).
+
+Mô hình hợp nhất này giải quyết triệt để vấn đề "silos dữ liệu" (các ốc đảo dữ liệu bị cô lập), cho phép chúng ta lưu trữ dữ liệu thô từ quá trình scraping trực tiếp vào hệ thống mà không cần qua các bước tiền xử lý phức tạp hay tốn kém. Dữ liệu sau đó được tinh chỉnh dần dần qua các lớp (Bronze, Silver, Gold) ngay trên cùng một nền tảng lưu trữ, giúp giảm thiểu đáng kể độ trễ dữ liệu (data latency), loại bỏ việc sao chép dữ liệu dư thừa giữa các hệ thống khác nhau, và đơn giản hóa toàn bộ kiến trúc vận hành.
 
 ### 2.2 Công nghệ Delta Lake
 Tại trung tâm của việc triển khai này là Delta Lake, một lớp lưu trữ mã nguồn mở mang lại độ tin cậy cho Data Lakes. Các tính năng chính được sử dụng trong dự án bao gồm:
