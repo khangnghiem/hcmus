@@ -1,0 +1,14 @@
+{
+    "is_success": true,
+    "code": "000000",
+    "message": null,
+    "data": {
+        "result_file_name": "temp_2d7b999ed1fe47f68632830569b8c754.jpg",
+        "result_ocr_text": [],
+        "result_bbox": [],
+        "details": {
+            "file_name": "",
+            "details": []
+        }
+    }
+}
